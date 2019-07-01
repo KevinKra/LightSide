@@ -1,0 +1,38 @@
+.MainPage {
+  // border: 1px solid blue;
+  overflow: hidden;
+  min-height: 100vh;
+  min-width: 100vw;
+  h1 {
+    margin: 0;
+    border: 1px solid red;
+  }
+  nav {
+    border: 1px solid red;
+  }
+  .crawl {
+    // border: 1px solid blue;
+    background-color: lightgrey;
+    height: 100vh;
+    width: 100vw;
+    transition: 1s height linear;
+    overflow: hidden;
+  }
+  .background-image {
+    // border: 1px solid red;
+    height: 100vh;
+    width: 100vw;
+    background: url("../../utils/images/sw-stormtroopers.jpg");
+    background-size: cover;
+  }
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid blue;
+    height: 90vh;
+    nav {
+      align-self: center;
+    }
+  }
+}
