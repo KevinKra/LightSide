@@ -1,6 +1,7 @@
 .MainPage {
   // border: 1px solid blue;
   overflow: hidden;
+  overflow-y: none;
   min-height: 100vh;
   min-width: 100vw;
   h1 {
@@ -15,8 +16,15 @@
     background-color: lightgrey;
     height: 100vh;
     width: 100vw;
-    transition: 1s height linear;
+    transition: 0.5s height ease-in;
     overflow: hidden;
+  }
+  .hero-section {
+    border: 1px solid green;
+    overflow: hidden;
+    height: 100vh;
+    transition: 0.5s height ease-in;
+    width: 100vw;
   }
   .background-image {
     // border: 1px solid red;
@@ -34,5 +42,10 @@
     nav {
       align-self: center;
     }
+  }
+  .content-section {
+    border: 1px solid red;
+    height: 100vh;
+    width: 100vw;
   }
 }

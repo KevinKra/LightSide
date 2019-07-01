@@ -5,10 +5,22 @@ import "./MainPage.scss";
 export default class MainPage extends Component {
   state = {
     displayCrawl: true,
-    displayContent: false
+    displayContent: false,
+    content: "null"
   };
+
   turnOffCrawl = () => {
     this.setState({ displayCrawl: false });
+  };
+
+  displayPeople = () => {
+    this.setState({ displayContent: true, content: "People" });
+  };
+  displayPlanets = () => {
+    this.setState({ displayContent: true, content: "Planets" });
+  };
+  displayVehicles = () => {
+    this.setState({ displayContent: true, content: "Vehicles" });
   };
 
   render() {
@@ -22,15 +34,21 @@ export default class MainPage extends Component {
           <p>CRAWL</p>
           <button onClick={this.turnOffCrawl}>X</button>
         </section>
-        <section className="background-image">
+        <section
+          className="hero-section background-image"
+          style={this.state.displayContent ? collapse : null}
+        >
           <div className="hero-content">
             <h1>LIGHTSIDE</h1>
             <nav>
-              <button>PEOPLE</button>
-              <button>PLANETS</button>
-              <button>VEHICLES</button>
+              <button onClick={this.displayPeople}>PEOPLE</button>
+              <button onClick={this.displayPlanets}>PLANETS</button>
+              <button onClick={this.displayVehicles}>VEHICLES</button>
             </nav>
           </div>
+        </section>
+        <section className="content-section">
+          <p>CONTENT</p>
         </section>
       </main>
     );
