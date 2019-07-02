@@ -16,6 +16,7 @@ export default function HeroSection(props) {
             <button onClick={() => props.displayData("vehicles")}>
               VEHICLES
             </button>
+            <button onClick={props.displayFavorites}>Favorites</button>
           </Link>
         </nav>
       </div>

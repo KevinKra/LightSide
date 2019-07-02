@@ -20,14 +20,25 @@ export default class MainPage extends Component {
   // }
 
   addToFavorites = target => {
-    const newElement = this.state.content.filter(element => {
+    const match = this.state.content.filter(element => {
       return element.name === target;
     });
-    if (!this.state.favorites.includes(newElement[0])) {
-      this.setState({
-        favorites: [...this.state.favorites, { ...newElement[0], id: uuidv1() }]
-      });
+    const newElement = { ...match[0], id: uuidv1() };
+
+    const detection = this.state.favorites.filter(
+      element => element.name === newElement.name
+    );
+    if (detection.length < 1) {
+      this.setState({ favorites: [...this.state.favorites, newElement] });
     }
+    // console.log("detected", detected);
+  };
+
+  removeFromFavorites = target => {
+    const updatedFavorites = this.state.favorites.filter(element => {
+      return element.name !== target;
+    });
+    this.setState({ favorites: updatedFavorites });
   };
 
   displayData = async type => {
@@ -35,14 +46,22 @@ export default class MainPage extends Component {
     this.setState({ content: response, theme: type });
   };
 
+  displayFavorites = () => {
+    this.setState({ content: this.state.favorites });
+  };
+
   render() {
     return (
       <main className="MainPage">
-        <HeroSection displayData={this.displayData} />
+        <HeroSection
+          displayData={this.displayData}
+          displayFavorites={this.displayFavorites}
+        />
         <ContentSection
           content={this.state.content}
           theme={this.state.theme}
           addToFavorites={this.addToFavorites}
+          removeFromFavorites={this.removeFromFavorites}
         />
       </main>
     );

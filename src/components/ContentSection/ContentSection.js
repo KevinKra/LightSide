@@ -3,9 +3,6 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./ContentSection.scss";
 
 export default class ContentSection extends Component {
-  state = {
-    hide: false
-  };
   render() {
     return (
       <section className="content-section">
@@ -14,7 +11,7 @@ export default class ContentSection extends Component {
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
         {this.props.content.map(element => {
-          if (this.props.theme === "people") {
+          if (element.hasOwnProperty("gender")) {
             return (
               <article>
                 <h1>name: {element.name}</h1>
@@ -27,10 +24,15 @@ export default class ContentSection extends Component {
                 <button onClick={() => this.props.addToFavorites(element.name)}>
                   ✓
                 </button>
+                <button
+                  onClick={() => this.props.removeFromFavorites(element.name)}
+                >
+                  X
+                </button>
               </article>
             );
           }
-          if (this.props.theme === "planets") {
+          if (element.hasOwnProperty("terrain")) {
             return (
               <article>
                 <h1>name: {element.name}</h1>
@@ -46,7 +48,7 @@ export default class ContentSection extends Component {
               </article>
             );
           }
-          if (this.props.theme === "vehicles") {
+          if (element.hasOwnProperty("model")) {
             return (
               <article>
                 <h1>name: {element.name}</h1>
