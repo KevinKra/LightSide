@@ -20,11 +20,13 @@ export default class ContentSection extends Component {
                 <h1>name: {element.name}</h1>
                 <p>gender: {element.gender}</p>
                 <p>hair: {element.hair_color}</p>
-                <p>eye: {element.eye_color}</p>
-                <p>birth: {element.birth_year}</p>
+                <p>eye color: {element.eye_color}</p>
+                <p>birth year: {element.birth_year}</p>
                 <p>mass: {element.mass}</p>
                 <p>height: {element.height}</p>
-                <button>✓</button>
+                <button onClick={() => this.props.addToFavorites(element.name)}>
+                  ✓
+                </button>
               </article>
             );
           }
@@ -38,7 +40,9 @@ export default class ContentSection extends Component {
                 <p>day length: {element.rotation_period} hours</p>
                 <p>year length: {element.orbital_period} days</p>
                 <p>diameter: {element.diameter}</p>
-                <button>✓</button>
+                <button onClick={() => this.props.addToFavorites(element.name)}>
+                  ✓
+                </button>
               </article>
             );
           }
@@ -54,7 +58,9 @@ export default class ContentSection extends Component {
                 <p>crew capacity: {element.crew}</p>
                 <p>passenger capacity: {element.passengers}</p>
                 <p>cargo capacity: {element.cargo_capacity}</p>
-                <button>✓</button>
+                <button onClick={() => this.props.addToFavorites(element.name)}>
+                  ✓
+                </button>
               </article>
             );
           }
