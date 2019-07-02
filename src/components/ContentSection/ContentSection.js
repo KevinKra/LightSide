@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./ContentSection.scss";
+import Card from "../Card/Card";
 
 export default class ContentSection extends Component {
   render() {
@@ -13,57 +14,32 @@ export default class ContentSection extends Component {
         {this.props.content.map(element => {
           if (element.hasOwnProperty("gender")) {
             return (
-              <article>
-                <h1>name: {element.name}</h1>
-                <p>gender: {element.gender}</p>
-                <p>hair: {element.hair_color}</p>
-                <p>eye color: {element.eye_color}</p>
-                <p>birth year: {element.birth_year}</p>
-                <p>mass: {element.mass}</p>
-                <p>height: {element.height}</p>
-                <button onClick={() => this.props.addToFavorites(element.name)}>
-                  ✓
-                </button>
-                <button
-                  onClick={() => this.props.removeFromFavorites(element.name)}
-                >
-                  X
-                </button>
-              </article>
+              <Card
+                format="person"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+              />
             );
           }
           if (element.hasOwnProperty("terrain")) {
             return (
-              <article>
-                <h1>name: {element.name}</h1>
-                <p>climate: {element.climate}</p>
-                <p>terrain: {element.terrain}</p>
-                <p>population: {element.population}</p>
-                <p>day length: {element.rotation_period} hours</p>
-                <p>year length: {element.orbital_period} days</p>
-                <p>diameter: {element.diameter}</p>
-                <button onClick={() => this.props.addToFavorites(element.name)}>
-                  ✓
-                </button>
-              </article>
+              <Card
+                format="planet"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+              />
             );
           }
           if (element.hasOwnProperty("model")) {
             return (
-              <article>
-                <h1>name: {element.name}</h1>
-                <p>model: {element.model}</p>
-                <p>class: {element.vehicle_class}</p>
-                <p>manufacturer: {element.manufacturer}</p>
-                <p>cost: {element.cost_in_credits}</p>
-                <p>maximum speed: {element.max_atmosphering_speed}</p>
-                <p>crew capacity: {element.crew}</p>
-                <p>passenger capacity: {element.passengers}</p>
-                <p>cargo capacity: {element.cargo_capacity}</p>
-                <button onClick={() => this.props.addToFavorites(element.name)}>
-                  ✓
-                </button>
-              </article>
+              <Card
+                format="vehicle"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+              />
             );
           }
         })}

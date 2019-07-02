@@ -24,14 +24,12 @@ export default class MainPage extends Component {
       return element.name === target;
     });
     const newElement = { ...match[0], id: uuidv1() };
-
     const detection = this.state.favorites.filter(
       element => element.name === newElement.name
     );
     if (detection.length < 1) {
       this.setState({ favorites: [...this.state.favorites, newElement] });
     }
-    // console.log("detected", detected);
   };
 
   removeFromFavorites = target => {
