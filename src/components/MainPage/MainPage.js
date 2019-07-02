@@ -10,12 +10,22 @@ import HeroSection from "../HeroSection/HeroSection";
 export default class MainPage extends Component {
   state = {
     theme: "people",
-    content: mockData.mockPeople.results
+    content: mockData.mockPeople.results,
+    favorites: []
   };
 
   // componentDidMount() {
   //   scroll.scrollToTop();
   // }
+
+  addToFavorites = target => {
+    const newElement = this.state.content.filter(element => {
+      return element.name === target;
+    });
+    if (!this.state.favorites.includes(newElement[0])) {
+      this.setState({ favorites: [...this.state.favorites, newElement[0]] });
+    }
+  };
 
   displayData = async type => {
     const response = await apiCalls.fetchData(type);
@@ -27,7 +37,11 @@ export default class MainPage extends Component {
       <main className="MainPage">
         <Crawl />
         <HeroSection displayData={this.displayData} />
-        <ContentSection content={this.state.content} theme={this.state.theme} />
+        <ContentSection
+          content={this.state.content}
+          theme={this.state.theme}
+          addToFavorites={this.addToFavorites}
+        />
       </main>
     );
   }
