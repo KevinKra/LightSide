@@ -34,6 +34,11 @@ export default class MainPage extends Component {
   };
 
   removeFromFavorites = target => {
+    const element = this.state.favorites.find(element => {
+      return (element.name = target);
+    });
+    element.favorited = false;
+    console.log("element", element);
     const updatedFavorites = this.state.favorites.filter(element => {
       return element.name !== target;
     });
