@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import * as apiCalls from "../../utils/api/apiCalls";
+import * as mockData from "../../utils/data";
 import "./MainPage.scss";
 import Crawl from "../Crawl/Crawl";
 import ContentSection from "../ContentSection/ContentSection";
@@ -7,48 +9,24 @@ import HeroSection from "../HeroSection/HeroSection";
 
 export default class MainPage extends Component {
   state = {
-    displayCrawl: true,
-    displayContent: false,
-    content: "null"
+    content: mockData.mockPeople.results
   };
 
-  componentDidMount() {
-    scroll.scrollToTop();
-  }
+  // componentDidMount() {
+  //   scroll.scrollToTop();
+  // }
 
-  turnOffCrawl = () => {
-    this.setState({ displayCrawl: false });
-  };
-
-  displayPeople = () => {
-    this.setState({ displayContent: true, content: "People" });
-  };
-  displayPlanets = () => {
-    this.setState({ displayContent: true, content: "Planets" });
-  };
-  displayVehicles = () => {
-    this.setState({ displayContent: true, content: "Vehicles" });
-  };
-
-  returnToHero = () => {
-    this.setState({ displayContent: false });
+  displayData = async type => {
+    const response = await apiCalls.fetchData(type);
+    this.setState({ content: response });
   };
 
   render() {
     return (
       <main className="MainPage">
-        <Crawl
-          turnOffCrawl={this.turnOffCrawl}
-          displayCrawl={this.state.displayCrawl}
-        />
-        <HeroSection
-          displayContent={this.state.displayContent}
-          revert={this.state.revert}
-          displayPeople={this.displayPeople}
-          displayPlanets={this.displayPlanets}
-          displayVehicles={this.displayVehicles}
-        />
-        <ContentSection returnToHero={this.returnToHero} />
+        <Crawl />
+        <HeroSection displayData={this.displayData} />
+        <ContentSection content={this.state.content} />
       </main>
     );
   }
