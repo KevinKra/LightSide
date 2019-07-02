@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
+import uuidv1 from "uuid/v1";
 import * as apiCalls from "../../utils/api/apiCalls";
 import * as mockData from "../../utils/data";
 import "./MainPage.scss";
@@ -23,7 +24,9 @@ export default class MainPage extends Component {
       return element.name === target;
     });
     if (!this.state.favorites.includes(newElement[0])) {
-      this.setState({ favorites: [...this.state.favorites, newElement[0]] });
+      this.setState({
+        favorites: [...this.state.favorites, { ...newElement[0], id: uuidv1() }]
+      });
     }
   };
 
