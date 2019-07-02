@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./ContentSection.scss";
 
-export default class ContentPage extends Component {
+export default class ContentSection extends Component {
   state = {
     hide: false
   };
@@ -10,10 +10,23 @@ export default class ContentPage extends Component {
     return (
       <section className="content-section">
         <div className="carrot" />
-        <p>CONTENT</p>
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
+        {this.props.content.map(element => {
+          return (
+            <article>
+              <h1>name: {element.name}</h1>
+              <p>gender: {element.gender}</p>
+              <p>hair: {element.hair_color}</p>
+              <p>eye: {element.eye_color}</p>
+              <p>birth: {element.birth_year}</p>
+              <p>mass: {element.mass}</p>
+              <p>height: {element.height}</p>
+              <button>✓</button>
+            </article>
+          );
+        })}
       </section>
     );
   }
