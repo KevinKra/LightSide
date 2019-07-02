@@ -38,7 +38,6 @@ export default class MainPage extends Component {
   render() {
     return (
       <main className="MainPage">
-        <Crawl />
         <HeroSection displayData={this.displayData} />
         <ContentSection
           content={this.state.content}
