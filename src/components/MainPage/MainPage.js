@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 // import backgroundImage from "../../utils/images/sw-stormtroopers.jpg";
 import "./MainPage.scss";
+import Crawl from "../Crawl/Crawl";
+import ContentSection from "../ContentSection/ContentSection";
+import HeroSection from "../HeroSection/HeroSection";
 
 export default class MainPage extends Component {
   state = {
@@ -23,33 +26,25 @@ export default class MainPage extends Component {
     this.setState({ displayContent: true, content: "Vehicles" });
   };
 
+  returnToHero = () => {
+    this.setState({ displayContent: false });
+  };
+
   render() {
-    const collapse = { height: "0vw" };
     return (
       <main className="MainPage">
-        <section
-          className="crawl"
-          style={this.state.displayCrawl ? null : collapse}
-        >
-          <p>CRAWL</p>
-          <button onClick={this.turnOffCrawl}>X</button>
-        </section>
-        <section
-          className="hero-section background-image"
-          style={this.state.displayContent ? collapse : null}
-        >
-          <div className="hero-content">
-            <h1>LIGHTSIDE</h1>
-            <nav>
-              <button onClick={this.displayPeople}>PEOPLE</button>
-              <button onClick={this.displayPlanets}>PLANETS</button>
-              <button onClick={this.displayVehicles}>VEHICLES</button>
-            </nav>
-          </div>
-        </section>
-        <section className="content-section">
-          <p>CONTENT</p>
-        </section>
+        <Crawl
+          turnOffCrawl={this.turnOffCrawl}
+          displayCrawl={this.state.displayCrawl}
+        />
+        <HeroSection
+          displayContent={this.state.displayContent}
+          revert={this.state.revert}
+          displayPeople={this.displayPeople}
+          displayPlanets={this.displayPlanets}
+          displayVehicles={this.displayVehicles}
+        />
+        <ContentSection returnToHero={this.returnToHero} />
       </main>
     );
   }
