@@ -7,12 +7,8 @@ export default class ContentPage extends Component {
     hide: false
   };
   render() {
-    // const collapse = { height: "0vw", transition: "0.5s height ease-in" };
     return (
-      <section
-        className="content-section"
-        // style={this.state.hide ? collapse : null}
-      >
+      <section className="content-section">
         <div className="carrot" />
         <p>CONTENT</p>
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>

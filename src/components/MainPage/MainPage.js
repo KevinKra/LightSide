@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import backgroundImage from "../../utils/images/sw-stormtroopers.jpg";
+import { Link, animateScroll as scroll } from "react-scroll";
 import "./MainPage.scss";
 import Crawl from "../Crawl/Crawl";
 import ContentSection from "../ContentSection/ContentSection";
@@ -11,6 +11,10 @@ export default class MainPage extends Component {
     displayContent: false,
     content: "null"
   };
+
+  componentDidMount() {
+    scroll.scrollToTop();
+  }
 
   turnOffCrawl = () => {
     this.setState({ displayCrawl: false });

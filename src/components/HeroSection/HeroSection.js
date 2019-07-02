@@ -1,15 +1,10 @@
 import React from "react";
 import { Link, animateScroll as scroll } from "react-scroll";
-
 import "./HeroSection.scss";
 
 export default function HeroSection(props) {
-  // const collapse = { height: "0vw", transition: "0.5s height ease-in" };
   return (
-    <section
-      className="hero-section background-image"
-      // style={props.displayContent ? collapse : null}
-    >
+    <section className="hero-section background-image">
       <div className="hero-content">
         <h1>LIGHTSIDE</h1>
         <nav>
