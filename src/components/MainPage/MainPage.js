@@ -9,6 +9,7 @@ import HeroSection from "../HeroSection/HeroSection";
 
 export default class MainPage extends Component {
   state = {
+    theme: "people",
     content: mockData.mockPeople.results
   };
 
@@ -18,7 +19,7 @@ export default class MainPage extends Component {
 
   displayData = async type => {
     const response = await apiCalls.fetchData(type);
-    this.setState({ content: response });
+    this.setState({ content: response, theme: type });
   };
 
   render() {
@@ -26,7 +27,7 @@ export default class MainPage extends Component {
       <main className="MainPage">
         <Crawl />
         <HeroSection displayData={this.displayData} />
-        <ContentSection content={this.state.content} />
+        <ContentSection content={this.state.content} theme={this.state.theme} />
       </main>
     );
   }

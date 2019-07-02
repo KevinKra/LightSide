@@ -14,18 +14,48 @@ export default class ContentSection extends Component {
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
         {this.props.content.map(element => {
-          return (
-            <article>
-              <h1>name: {element.name}</h1>
-              <p>gender: {element.gender}</p>
-              <p>hair: {element.hair_color}</p>
-              <p>eye: {element.eye_color}</p>
-              <p>birth: {element.birth_year}</p>
-              <p>mass: {element.mass}</p>
-              <p>height: {element.height}</p>
-              <button>✓</button>
-            </article>
-          );
+          if (this.props.theme === "people") {
+            return (
+              <article>
+                <h1>name: {element.name}</h1>
+                <p>gender: {element.gender}</p>
+                <p>hair: {element.hair_color}</p>
+                <p>eye: {element.eye_color}</p>
+                <p>birth: {element.birth_year}</p>
+                <p>mass: {element.mass}</p>
+                <p>height: {element.height}</p>
+                <button>✓</button>
+              </article>
+            );
+          }
+          if (this.props.theme === "planets") {
+            return (
+              <article>
+                <h1>name: {element.name}</h1>
+                <p>gender: {element.gender}</p>
+                <p>hair: {element.hair_color}</p>
+                <p>eye: {element.eye_color}</p>
+                <p>birth: {element.birth_year}</p>
+                <p>mass: {element.mass}</p>
+                <p>height: {element.height}</p>
+                <button>✓</button>
+              </article>
+            );
+          }
+          if (this.props.theme === "vehicles") {
+            return (
+              <article>
+                <h1>name: {element.name}</h1>
+                <p>gender: {element.gender}</p>
+                <p>hair: {element.hair_color}</p>
+                <p>eye: {element.eye_color}</p>
+                <p>birth: {element.birth_year}</p>
+                <p>mass: {element.mass}</p>
+                <p>height: {element.height}</p>
+                <button>✓</button>
+              </article>
+            );
+          }
         })}
       </section>
     );
