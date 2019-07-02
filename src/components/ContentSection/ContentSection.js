@@ -32,12 +32,12 @@ export default class ContentSection extends Component {
             return (
               <article>
                 <h1>name: {element.name}</h1>
-                <p>gender: {element.gender}</p>
-                <p>hair: {element.hair_color}</p>
-                <p>eye: {element.eye_color}</p>
-                <p>birth: {element.birth_year}</p>
-                <p>mass: {element.mass}</p>
-                <p>height: {element.height}</p>
+                <p>climate: {element.climate}</p>
+                <p>terrain: {element.terrain}</p>
+                <p>population: {element.population}</p>
+                <p>day length: {element.rotation_period} hours</p>
+                <p>year length: {element.orbital_period} days</p>
+                <p>diameter: {element.diameter}</p>
                 <button>✓</button>
               </article>
             );
@@ -46,12 +46,14 @@ export default class ContentSection extends Component {
             return (
               <article>
                 <h1>name: {element.name}</h1>
-                <p>gender: {element.gender}</p>
-                <p>hair: {element.hair_color}</p>
-                <p>eye: {element.eye_color}</p>
-                <p>birth: {element.birth_year}</p>
-                <p>mass: {element.mass}</p>
-                <p>height: {element.height}</p>
+                <p>model: {element.model}</p>
+                <p>class: {element.vehicle_class}</p>
+                <p>manufacturer: {element.manufacturer}</p>
+                <p>cost: {element.cost_in_credits}</p>
+                <p>maximum speed: {element.max_atmosphering_speed}</p>
+                <p>crew capacity: {element.crew}</p>
+                <p>passenger capacity: {element.passengers}</p>
+                <p>cargo capacity: {element.cargo_capacity}</p>
                 <button>✓</button>
               </article>
             );
