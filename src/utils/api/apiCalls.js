@@ -1,5 +1,11 @@
+import uuidv1 from "uuid/v1";
+
 export const fetchData = async data => {
   const response = await fetch(`https://swapi.co/api/${data}`);
   const parse = await response.json();
-  return parse.results;
+  const output = parse.results.map(element => {
+    return { ...element, favorited: false, id: uuidv1() };
+  });
+  console.log("output", output);
+  return output;
 };

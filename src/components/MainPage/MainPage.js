@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
-import uuidv1 from "uuid/v1";
+// import { Link, animateScroll as scroll } from "react-scroll";
+// import uuidv1 from "uuid/v1";
 import * as apiCalls from "../../utils/api/apiCalls";
 import * as mockData from "../../utils/data";
 import "./MainPage.scss";
-import Crawl from "../Crawl/Crawl";
+// import Crawl from "../Crawl/Crawl";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
 
@@ -23,7 +23,8 @@ export default class MainPage extends Component {
     const match = this.state.content.filter(element => {
       return element.name === target;
     });
-    const newElement = { ...match[0], id: uuidv1() };
+    const newElement = match[0];
+    newElement.favorited = true;
     const detection = this.state.favorites.filter(
       element => element.name === newElement.name
     );
