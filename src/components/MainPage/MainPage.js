@@ -29,7 +29,7 @@ export default class MainPage extends Component {
     const output = parse.results.map(element => {
       return { ...element, favorited: false, id: uuidv1() };
     });
-    console.log("output", output);
+    // console.log("output", output);
     return output;
   };
 
@@ -37,6 +37,7 @@ export default class MainPage extends Component {
     const match = this.state.content.filter(element => {
       return element.name === target;
     });
+    console.log(match[0]);
     const newElement = match[0];
     newElement.favorited = true;
     const detection = this.state.favorites.filter(
@@ -56,22 +57,29 @@ export default class MainPage extends Component {
     const updatedFavorites = this.state.favorites.filter(element => {
       return element.name !== target;
     });
+    {
+      this.state.theme === "favorites" &&
+        this.setState({
+          favorites: updatedFavorites,
+          content: updatedFavorites
+        });
+    }
     this.setState({ favorites: updatedFavorites });
   };
 
   displayData = async type => {
     if (this.state[type].length > 1) {
-      console.log("local state");
+      // console.log("local state");
       this.setState({ content: this.state[type], theme: type });
     } else {
-      console.log("fetching");
+      // console.log("fetching");
       const response = await this.fetchData(type);
       this.setState({ content: response, [type]: response, theme: type });
     }
   };
 
   displayFavorites = () => {
-    this.setState({ content: this.state.favorites });
+    this.setState({ content: this.state.favorites, theme: "favorites" });
   };
 
   render() {
