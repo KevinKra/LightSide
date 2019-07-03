@@ -5,8 +5,8 @@ import Card from "../Card/Card";
 
 export default class ContentSection extends Component {
   render() {
-    const cards = () =>
-      this.props.content.map(element => {
+    const cards = () => {
+      return this.props.content.map(element => {
         if (element.hasOwnProperty("gender")) {
           return (
             <Card
@@ -17,8 +17,7 @@ export default class ContentSection extends Component {
               key={element.id}
             />
           );
-        }
-        if (element.hasOwnProperty("terrain")) {
+        } else if (element.hasOwnProperty("terrain")) {
           return (
             <Card
               format="planet"
@@ -28,8 +27,7 @@ export default class ContentSection extends Component {
               key={element.id}
             />
           );
-        }
-        if (element.hasOwnProperty("model")) {
+        } else if (element.hasOwnProperty("model")) {
           return (
             <Card
               format="vehicle"
@@ -39,8 +37,11 @@ export default class ContentSection extends Component {
               key={element.id}
             />
           );
+        } else {
+          return <p>"Error in card rendering process"</p>;
         }
       });
+    };
 
     const output = () => {
       if (this.props.content.length !== 0 && this.props.theme !== "favorites") {
@@ -66,22 +67,7 @@ export default class ContentSection extends Component {
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
-
         {output()}
-
-        {/* {this.props.content.length !== 0 && this.props.theme !== "favorites" ? (
-          cards()
-        ) : (
-          <p>loading</p>
-        )}
-        {this.props.content.length !== 0 && this.props.theme === "favorites" ? (
-          cards()
-        ) : (
-          <p>loading</p>
-        )} */}
-
-        {/* {this.props.content.length === 0 &&
-          this.props.theme === "favorites" && <p>Currently No Favorites</p>} */}
       </section>
     );
   }
