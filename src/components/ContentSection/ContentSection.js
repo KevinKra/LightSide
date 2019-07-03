@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import "./ContentSection.scss";
 import Card from "../Card/Card";
 
@@ -19,6 +19,7 @@ export default class ContentSection extends Component {
                 element={element}
                 addToFavorites={this.props.addToFavorites}
                 removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
               />
             );
           }
@@ -29,6 +30,7 @@ export default class ContentSection extends Component {
                 element={element}
                 addToFavorites={this.props.addToFavorites}
                 removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
               />
             );
           }
@@ -39,6 +41,7 @@ export default class ContentSection extends Component {
                 element={element}
                 addToFavorites={this.props.addToFavorites}
                 removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
               />
             );
           }
