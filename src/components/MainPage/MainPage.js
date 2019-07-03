@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-// import { Link, animateScroll as scroll } from "react-scroll";
-// import uuidv1 from "uuid/v1";
-// import * as apiCalls from "../../utils/api/apiCalls";
 import uuidv1 from "uuid/v1";
-// import * as mockData from "../../utils/data";
-import "./MainPage.scss";
-// import Crawl from "../Crawl/Crawl";
+import { animateScroll as scroll } from "react-scroll";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
+import image3 from "../../utils/images/x-wings.jpg";
+import image4 from "../../utils/images/sw-crashedATAT.jpg";
+import image5 from "../../utils/images/sw-crashedxwing.jpg";
+import image6 from "../../utils/images/sw-ruinedship.jpg";
+import image7 from "../../utils/images/sw-waiting.jpg";
+import image8 from "../../utils/images/sw-walkers.jpg";
+import image9 from "../../utils/images/sw-boba.jpg";
+import "./MainPage.scss";
 
 export default class MainPage extends Component {
   state = {
     theme: "people",
+    backgroundImage: image6,
     content: [],
     people: [],
     planets: [],
@@ -19,9 +23,17 @@ export default class MainPage extends Component {
     favorites: []
   };
 
-  // componentDidMount() {
-  //   scroll.scrollToTop();
-  // }
+  componentDidMount() {
+    scroll.scrollToTop();
+    this.createBg();
+  }
+
+  createBg = () => {
+    console.log("firing");
+    const images = [image3, image4, image5, image6, image7, image8, image9];
+    const index = Math.floor(Math.random() * images.length);
+    this.setState({ backgroundImage: images[index] });
+  };
 
   fetchData = async data => {
     const response = await fetch(`https://swapi.co/api/${data}`);
@@ -29,7 +41,6 @@ export default class MainPage extends Component {
     const output = parse.results.map(element => {
       return { ...element, favorited: false, id: uuidv1() };
     });
-    // console.log("output", output);
     return output;
   };
 
@@ -37,7 +48,6 @@ export default class MainPage extends Component {
     const match = this.state.content.filter(element => {
       return element.name === target;
     });
-    console.log(match[0]);
     const newElement = match[0];
     newElement.favorited = true;
     const detection = this.state.favorites.filter(
@@ -50,31 +60,37 @@ export default class MainPage extends Component {
 
   removeFromFavorites = target => {
     const element = this.state.favorites.find(element => {
-      return (element.name = target);
+      return element.name === target;
     });
     element.favorited = false;
-    console.log("element", element);
     const updatedFavorites = this.state.favorites.filter(element => {
       return element.name !== target;
     });
-    {
-      this.state.theme === "favorites" &&
-        this.setState({
-          favorites: updatedFavorites,
-          content: updatedFavorites
-        });
-    }
+
+    this.state.theme === "favorites" &&
+      this.setState({
+        favorites: updatedFavorites,
+        content: updatedFavorites
+      });
+
     this.setState({ favorites: updatedFavorites });
   };
 
   displayData = async type => {
+    setTimeout(() => {
+      this.createBg();
+    }, 1000);
+    this.setState({ content: [] });
     if (this.state[type].length > 1) {
-      // console.log("local state");
       this.setState({ content: this.state[type], theme: type });
     } else {
-      // console.log("fetching");
+      this.setState({ theme: type });
       const response = await this.fetchData(type);
-      this.setState({ content: response, [type]: response, theme: type });
+      if (this.state.theme === type) {
+        this.setState({ content: response, [type]: response, theme: type });
+      } else {
+        this.setState({ [type]: response });
+      }
     }
   };
 
@@ -88,6 +104,8 @@ export default class MainPage extends Component {
         <HeroSection
           displayData={this.displayData}
           displayFavorites={this.displayFavorites}
+          totalFavorites={this.state.favorites.length}
+          backgroundImage={this.state.backgroundImage}
         />
         <ContentSection
           content={this.state.content}

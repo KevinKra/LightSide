@@ -1,28 +1,87 @@
 .hero-section {
-  // border: 1px solid green;
-  // transition: 0.5s height ease-in;
+  position: relative;
   overflow: hidden;
-  // height: 98vh;
+  height: 98vh;
   width: 100vw;
 }
 .background-image {
-  // border: 1px solid red;
-  height: 98vh;
-  width: 100vw;
-  background: url("../../utils/images/sw-stormtroopers.jpg");
+  position: absolute;
+  z-index: -2;
+  height: 100%;
+  width: 100%;
   background-size: cover;
+  background-position: bottom;
+}
+.background-gradient {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 35%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
 }
 .hero-content {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  // border: 1px solid blue;
   height: 90vh;
   nav {
+    display: flex;
+    flex-direction: column;
     align-self: center;
+    width: 350px;
+    text-align: center;
   }
+  .primary-btns {
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+  }
+  .favorites-btn {
+    font-size: 12px;
+    margin: 1rem auto 0 auto;
+    transform: translateX(-7px);
+    width: 100px;
+    span {
+      position: relative;
+      bottom: 1px;
+    }
+  }
+  a {
+    border: none;
+    background-color: transparent;
+    color: rgb(236, 236, 236);
+    transition: 0.19s text-shadow ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: white;
+      text-shadow: 0 0 4px black;
+    }
+  }
+}
+
+.primary-header {
+  // border: 1px solid red;
+  width: 325px;
+  color: white;
+  margin: 1rem 0 0 1rem;
   h1 {
     margin: 0;
-    border: 1px solid red;
+    // border: 1px solid red;
   }
+  p {
+    margin: 0;
+    // border: 1px solid red;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
