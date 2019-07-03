@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-// import { Link, animateScroll as scroll } from "react-scroll";
-// import uuidv1 from "uuid/v1";
-// import * as apiCalls from "../../utils/api/apiCalls";
 import uuidv1 from "uuid/v1";
-// import * as mockData from "../../utils/data";
 import "./MainPage.scss";
-// import Crawl from "../Crawl/Crawl";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
 
 export default class MainPage extends Component {
   state = {
     theme: "people",
-    content: [{ name: "steve", gender: "dog" }],
+    content: [],
     people: [],
     planets: [],
     vehicles: [],
@@ -29,7 +24,6 @@ export default class MainPage extends Component {
     const output = parse.results.map(element => {
       return { ...element, favorited: false, id: uuidv1() };
     });
-    // console.log("output", output);
     return output;
   };
 
@@ -37,7 +31,9 @@ export default class MainPage extends Component {
     const match = this.state.content.filter(element => {
       return element.name === target;
     });
-    console.log(match[0]);
+    // in the process of detecting why favorites collapses once two forms
+    // data appear, adds, remove, adds, collapse
+    console.log("match", match[0]);
     const newElement = match[0];
     newElement.favorited = true;
     const detection = this.state.favorites.filter(
@@ -49,40 +45,37 @@ export default class MainPage extends Component {
   };
 
   removeFromFavorites = target => {
+    //the bug is here, upon removing a second time this dumps all the content and wipes the array
+    //perhaps bug is because element order is changed upon second addition
     const element = this.state.favorites.find(element => {
-      return (element.name = target);
+      return element.name === target;
     });
+    console.log("element found", element);
+    // console.log("target", target);
     element.favorited = false;
-    console.log("element", element);
     const updatedFavorites = this.state.favorites.filter(element => {
       return element.name !== target;
     });
-    {
-      this.state.theme === "favorites" &&
-        this.setState({
-          favorites: updatedFavorites,
-          content: updatedFavorites
-        });
-    }
+
+    this.state.theme === "favorites" &&
+      this.setState({
+        favorites: updatedFavorites,
+        content: updatedFavorites
+      });
+
     this.setState({ favorites: updatedFavorites });
   };
 
   displayData = async type => {
     this.setState({ content: [] });
     if (this.state[type].length > 1) {
-      // console.log("local state");
       this.setState({ content: this.state[type], theme: type });
     } else {
-      // console.log("fetching");
       this.setState({ theme: type });
       const response = await this.fetchData(type);
       if (this.state.theme === type) {
-        console.log("theme", this.state.theme);
-        console.log("type", type);
         this.setState({ content: response, [type]: response, theme: type });
       } else {
-        console.log("theme", this.state.theme);
-        console.log("type", type);
         this.setState({ [type]: response });
       }
     }
