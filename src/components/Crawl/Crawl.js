@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Crawl.scss";
 
-export default function Crawl(props) {
-  const collapse = { height: "0vw", transition: "0.5s height ease-in" };
+export default function Crawl() {
+  //SetTimeout scroll to HeroContent (Upon completion of crawl)
   return (
-    <section className="Crawl" style={props.displayCrawl ? null : collapse}>
+    <section className="Crawl">
       <p>CRAWL</p>
-      <button onClick={props.turnOffCrawl}>X</button>
+      <Link to="/main">X</Link>
     </section>
   );
 }

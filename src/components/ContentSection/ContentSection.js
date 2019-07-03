@@ -1,13 +1,51 @@
 import React, { Component } from "react";
+import { Link } from "react-scroll";
 import "./ContentSection.scss";
+import Card from "../Card/Card";
 
-export default class ContentPage extends Component {
+export default class ContentSection extends Component {
   render() {
     return (
       <section className="content-section">
         <div className="carrot" />
-        <p>CONTENT</p>
-        <button onClick={this.props.returnToHero}>Back</button>
+        <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
+          <button onClick={this.props.returnToHero}>Back</button>
+        </Link>
+        {this.props.content.map(element => {
+          if (element.hasOwnProperty("gender")) {
+            return (
+              <Card
+                format="person"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
+              />
+            );
+          }
+          if (element.hasOwnProperty("terrain")) {
+            return (
+              <Card
+                format="planet"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
+              />
+            );
+          }
+          if (element.hasOwnProperty("model")) {
+            return (
+              <Card
+                format="vehicle"
+                element={element}
+                addToFavorites={this.props.addToFavorites}
+                removeFromFavorites={this.props.removeFromFavorites}
+                key={element.id}
+              />
+            );
+          }
+        })}
       </section>
     );
   }
