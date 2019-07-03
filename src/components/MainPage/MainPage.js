@@ -84,6 +84,7 @@ export default class MainPage extends Component {
         <HeroSection
           displayData={this.displayData}
           displayFavorites={this.displayFavorites}
+          totalFavorites={this.state.favorites.length}
         />
         <ContentSection
           content={this.state.content}
