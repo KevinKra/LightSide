@@ -3,9 +3,12 @@ import { Link } from "react-scroll";
 import "./HeroSection.scss";
 
 export default function HeroSection(props) {
+  const background = {
+    backgroundImage: `url(${props.backgroundImage})`
+  };
   return (
     <section className="hero-section">
-      <div className="background-image" />
+      <div className="background-image" style={background} />
       <div className="background-gradient" />
       <div className="hero-content">
         <header className="primary-header">
