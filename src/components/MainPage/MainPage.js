@@ -12,7 +12,7 @@ import HeroSection from "../HeroSection/HeroSection";
 export default class MainPage extends Component {
   state = {
     theme: "people",
-    content: [],
+    content: [{ name: "steve", gender: "dog" }],
     people: [],
     planets: [],
     vehicles: [],
@@ -68,13 +68,18 @@ export default class MainPage extends Component {
   };
 
   displayData = async type => {
+    this.setState({ content: [] });
     if (this.state[type].length > 1) {
       // console.log("local state");
       this.setState({ content: this.state[type], theme: type });
     } else {
       // console.log("fetching");
       const response = await this.fetchData(type);
-      this.setState({ content: response, [type]: response, theme: type });
+      if (this.state.type === type) {
+        this.setState({ content: response, [type]: response, theme: type });
+      } else {
+        this.setState({ [type]: response, theme: type });
+      }
     }
   };
 
