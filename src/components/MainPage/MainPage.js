@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
-import "./MainPage.scss";
+import { animateScroll as scroll } from "react-scroll";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
+import "./MainPage.scss";
 
 export default class MainPage extends Component {
   state = {
@@ -14,9 +15,9 @@ export default class MainPage extends Component {
     favorites: []
   };
 
-  // componentDidMount() {
-  //   scroll.scrollToTop();
-  // }
+  componentDidMount() {
+    scroll.scrollToTop();
+  }
 
   fetchData = async data => {
     const response = await fetch(`https://swapi.co/api/${data}`);
