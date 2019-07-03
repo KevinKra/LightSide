@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-scroll";
 import "./ContentSection.scss";
 import Card from "../Card/Card";
+import carrot from "../../utils/images/caret-up-solid.svg";
 
 export default class ContentSection extends Component {
   render() {
@@ -63,7 +64,7 @@ export default class ContentSection extends Component {
 
     return (
       <section className="content-section">
-        <div className="carrot" />
+        <img className="carrot" src={carrot} alt="carrot icon" />
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
