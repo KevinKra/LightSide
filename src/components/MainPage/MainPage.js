@@ -3,11 +3,19 @@ import uuidv1 from "uuid/v1";
 import { animateScroll as scroll } from "react-scroll";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
+import image3 from "../../utils/images/x-wings.jpg";
+import image4 from "../../utils/images/sw-crashedATAT.jpg";
+import image5 from "../../utils/images/sw-crashedxwing.jpg";
+import image6 from "../../utils/images/sw-ruinedship.jpg";
+import image7 from "../../utils/images/sw-waiting.jpg";
+import image8 from "../../utils/images/sw-walkers.jpg";
+import image9 from "../../utils/images/sw-boba.jpg";
 import "./MainPage.scss";
 
 export default class MainPage extends Component {
   state = {
     theme: "people",
+    backgroundImage: image6,
     content: [],
     people: [],
     planets: [],
@@ -17,7 +25,15 @@ export default class MainPage extends Component {
 
   componentDidMount() {
     scroll.scrollToTop();
+    this.createBg();
   }
+
+  createBg = () => {
+    console.log("firing");
+    const images = [image3, image4, image5, image6, image7, image8, image9];
+    const index = Math.floor(Math.random() * images.length);
+    this.setState({ backgroundImage: images[index] });
+  };
 
   fetchData = async data => {
     const response = await fetch(`https://swapi.co/api/${data}`);
@@ -61,6 +77,9 @@ export default class MainPage extends Component {
   };
 
   displayData = async type => {
+    setTimeout(() => {
+      this.createBg();
+    }, 1000);
     this.setState({ content: [] });
     if (this.state[type].length > 1) {
       this.setState({ content: this.state[type], theme: type });
@@ -86,6 +105,7 @@ export default class MainPage extends Component {
           displayData={this.displayData}
           displayFavorites={this.displayFavorites}
           totalFavorites={this.state.favorites.length}
+          backgroundImage={this.state.backgroundImage}
         />
         <ContentSection
           content={this.state.content}
