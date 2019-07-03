@@ -41,19 +41,47 @@ export default class ContentSection extends Component {
           );
         }
       });
+
+    const output = () => {
+      if (this.props.content.length !== 0 && this.props.theme !== "favorites") {
+        return cards();
+      } else if (
+        this.props.content.length !== 0 &&
+        this.props.theme === "favorites"
+      ) {
+        return cards();
+      } else if (
+        this.props.content.length === 0 &&
+        this.props.theme === "favorites"
+      ) {
+        return <p>Currently No Favorites</p>;
+      } else {
+        return <p>Loading</p>;
+      }
+    };
+
     return (
       <section className="content-section">
         <div className="carrot" />
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
           <button onClick={this.props.returnToHero}>Back</button>
         </Link>
-        {console.log(this.props.content.length)}
-        {console.log(this.props.theme)}
-        {this.props.content.length !== 0 && this.props.theme !== "favorites" ? (
+
+        {output()}
+
+        {/* {this.props.content.length !== 0 && this.props.theme !== "favorites" ? (
           cards()
         ) : (
           <p>loading</p>
         )}
+        {this.props.content.length !== 0 && this.props.theme === "favorites" ? (
+          cards()
+        ) : (
+          <p>loading</p>
+        )} */}
+
+        {/* {this.props.content.length === 0 &&
+          this.props.theme === "favorites" && <p>Currently No Favorites</p>} */}
       </section>
     );
   }
