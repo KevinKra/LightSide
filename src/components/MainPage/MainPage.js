@@ -31,9 +31,6 @@ export default class MainPage extends Component {
     const match = this.state.content.filter(element => {
       return element.name === target;
     });
-    // in the process of detecting why favorites collapses once two forms
-    // data appear, adds, remove, adds, collapse
-    console.log("match", match[0]);
     const newElement = match[0];
     newElement.favorited = true;
     const detection = this.state.favorites.filter(
@@ -45,13 +42,9 @@ export default class MainPage extends Component {
   };
 
   removeFromFavorites = target => {
-    //the bug is here, upon removing a second time this dumps all the content and wipes the array
-    //perhaps bug is because element order is changed upon second addition
     const element = this.state.favorites.find(element => {
       return element.name === target;
     });
-    console.log("element found", element);
-    // console.log("target", target);
     element.favorited = false;
     const updatedFavorites = this.state.favorites.filter(element => {
       return element.name !== target;
