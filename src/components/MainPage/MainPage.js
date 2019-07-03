@@ -74,11 +74,16 @@ export default class MainPage extends Component {
       this.setState({ content: this.state[type], theme: type });
     } else {
       // console.log("fetching");
+      this.setState({ theme: type });
       const response = await this.fetchData(type);
-      if (this.state.type === type) {
+      if (this.state.theme === type) {
+        console.log("theme", this.state.theme);
+        console.log("type", type);
         this.setState({ content: response, [type]: response, theme: type });
       } else {
-        this.setState({ [type]: response, theme: type });
+        console.log("theme", this.state.theme);
+        console.log("type", type);
+        this.setState({ [type]: response });
       }
     }
   };
