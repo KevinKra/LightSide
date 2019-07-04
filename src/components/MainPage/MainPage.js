@@ -35,17 +35,17 @@ export default class MainPage extends Component {
   };
 
   addToFavorites = target => {
-    const match = this.state.content.filter(element => {
+    const { content, favorites } = this.state;
+    const match = content.filter(element => {
       return element.name === target;
     });
     const newElement = match[0];
     newElement.favorited = true;
-    const detection = this.state.favorites.filter(
+    const detection = favorites.filter(
       element => element.name === newElement.name
     );
-    if (detection.length < 1) {
-      this.setState({ favorites: [...this.state.favorites, newElement] });
-    }
+    detection.length < 1 &&
+      this.setState({ favorites: [...favorites, newElement] });
   };
 
   removeFromFavorites = target => {
