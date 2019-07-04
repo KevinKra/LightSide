@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Card.scss";
 
 class Card extends Component {
   render() {
@@ -28,19 +29,22 @@ class Card extends Component {
 
     if (this.props.format === "person") {
       return (
-        <article>
-          <h1>{name}</h1>
-          <p>gender: {gender}</p>
-          <p>hair: {hair_color}</p>
-          <p>eye color: {eye_color}</p>
-          <p>birth year: {birth_year}</p>
-          <p>mass: {mass}</p>
-          <p>height: {height}</p>
+        <article className="Card">
+          <section className="card-primary">
+            <h1>{name}</h1>
+            <p>gender: {gender}</p>
+            <p>hair: {hair_color}</p>
+            <p>eye color: {eye_color}</p>
+            <p>birth year: {birth_year}</p>
+            <p>mass: {mass}</p>
+            <p>height: {height}</p>
+          </section>
+          <div className="card-bg person-bg" />
           {!this.props.element.favorited ? (
             <button onClick={() => this.props.addToFavorites(name)}>✓</button>
           ) : (
             <button onClick={() => this.props.removeFromFavorites(name)}>
-              X
+              Remove
             </button>
           )}
         </article>
@@ -48,19 +52,22 @@ class Card extends Component {
     }
     if (this.props.format === "planet") {
       return (
-        <article>
-          <h1>{name}</h1>
-          <p>climate: {climate}</p>
-          <p>terrain: {terrain}</p>
-          <p>population: {population}</p>
-          <p>day length: {rotation_period} hours</p>
-          <p>year length: {orbital_period} days</p>
-          <p>diameter: {diameter}</p>
+        <article className="Card">
+          <section className="card-primary">
+            <h1>{name}</h1>
+            <p>climate: {climate}</p>
+            <p>terrain: {terrain}</p>
+            <p>population: {population}</p>
+            <p>day length: {rotation_period} hours</p>
+            <p>year length: {orbital_period} days</p>
+            <p>diameter: {diameter}</p>
+          </section>
+          <div className="card-bg planet-bg" />
           {!this.props.element.favorited ? (
             <button onClick={() => this.props.addToFavorites(name)}>✓</button>
           ) : (
             <button onClick={() => this.props.removeFromFavorites(name)}>
-              X
+              Remove
             </button>
           )}
         </article>
@@ -68,21 +75,24 @@ class Card extends Component {
     }
     if (this.props.format === "vehicle") {
       return (
-        <article>
-          <h1>{name}</h1>
-          <p>model: {model}</p>
-          <p>class: {vehicle_class}</p>
-          <p>manufacturer: {manufacturer}</p>
-          <p>cost: {cost_in_credits}</p>
-          <p>maximum speed: {max_atmosphering_speed}</p>
-          <p>crew capacity: {crew}</p>
-          <p>passenger capacity: {passengers}</p>
-          <p>cargo capacity: {cargo_capacity}</p>
+        <article className="Card">
+          <section className="card-primary">
+            <h1>{name}</h1>
+            <p>model: {model}</p>
+            <p>class: {vehicle_class}</p>
+            <p>manufacturer: {manufacturer}</p>
+            <p>cost: {cost_in_credits}</p>
+            <p>maximum speed: {max_atmosphering_speed}</p>
+            <p>crew capacity: {crew}</p>
+            <p>passenger capacity: {passengers}</p>
+            <p>cargo capacity: {cargo_capacity}</p>
+          </section>
+          <div className="card-bg vehicle-bg" />
           {!this.props.element.favorited ? (
             <button onClick={() => this.props.addToFavorites(name)}>✓</button>
           ) : (
             <button onClick={() => this.props.removeFromFavorites(name)}>
-              X
+              Remove
             </button>
           )}
         </article>
