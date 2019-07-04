@@ -20,7 +20,7 @@ export default function HeroSection(props) {
             <Link
               to={"content-section"}
               smooth={true}
-              offset={0}
+              offset={50}
               duration={500}
               onClick={() => props.displayData("people")}
             >
@@ -29,7 +29,7 @@ export default function HeroSection(props) {
             <Link
               to={"content-section"}
               smooth={true}
-              offset={0}
+              offset={50}
               duration={500}
               onClick={() => props.displayData("planets")}
             >
@@ -38,7 +38,7 @@ export default function HeroSection(props) {
             <Link
               to={"content-section"}
               smooth={true}
-              offset={0}
+              offset={50}
               duration={500}
               onClick={() => props.displayData("vehicles")}
             >
@@ -48,6 +48,7 @@ export default function HeroSection(props) {
           <Link
             to={"content-section"}
             smooth={true}
+            offset={50}
             className={`favorites-btn ${!props.totalFavorites && "hidden"}`}
             disabled={!props.totalFavorites && true}
             onClick={props.displayFavorites}
