@@ -65,12 +65,12 @@ export default class MainPage extends Component {
     const newFavorites = favorites.filter(element => {
       return element.name !== target;
     });
-    theme === "favorites" &&
-      this.setState({
-        favorites: newFavorites,
-        content: newFavorites
-      });
-    this.setState({ favorites: newFavorites });
+    theme === "favorites"
+      ? this.setState({
+          favorites: newFavorites,
+          content: newFavorites
+        })
+      : this.setState({ favorites: newFavorites });
   };
 
   displayData = async type => {
@@ -83,11 +83,9 @@ export default class MainPage extends Component {
     } else {
       this.setState({ theme: type });
       const response = await helpers.fetchData(type);
-      if (this.state.theme === type) {
-        this.setState({ content: response, [type]: response, theme: type });
-      } else {
-        this.setState({ [type]: response });
-      }
+      this.state.theme === type
+        ? this.setState({ content: response, [type]: response, theme: type })
+        : this.setState({ [type]: response });
     }
   };
 
