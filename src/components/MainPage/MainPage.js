@@ -49,20 +49,19 @@ export default class MainPage extends Component {
   };
 
   removeFromFavorites = target => {
-    const element = this.state.favorites.find(element => {
+    const { favorites, theme } = this.state;
+    const element = favorites.find(element => {
       return element.name === target;
     });
     element.favorited = false;
-    const updatedFavorites = this.state.favorites.filter(element => {
+    const updatedFavorites = favorites.filter(element => {
       return element.name !== target;
     });
-
-    this.state.theme === "favorites" &&
+    theme === "favorites" &&
       this.setState({
         favorites: updatedFavorites,
         content: updatedFavorites
       });
-
     this.setState({ favorites: updatedFavorites });
   };
 
