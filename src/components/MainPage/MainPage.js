@@ -90,6 +90,9 @@ export default class MainPage extends Component {
   };
 
   displayFavorites = () => {
+    setTimeout(() => {
+      this.loadNewBackground();
+    }, 1000);
     this.setState({ content: this.state.favorites, theme: "favorites" });
   };
 
