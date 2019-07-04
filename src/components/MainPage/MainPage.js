@@ -68,10 +68,11 @@ export default class MainPage extends Component {
   };
 
   updateFavorites = target => {
-    const newFavorites = this.state.favorites.filter(element => {
+    const { favorites, theme } = this.state;
+    const newFavorites = favorites.filter(element => {
       return element.name !== target;
     });
-    this.state.theme === "favorites" &&
+    theme === "favorites" &&
       this.setState({
         favorites: newFavorites,
         content: newFavorites
