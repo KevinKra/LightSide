@@ -50,22 +50,22 @@ export default function ContentSection(props) {
     } else if (props.content.length !== 0 && props.theme === "favorites") {
       return cards();
     } else if (props.content.length === 0 && props.theme === "favorites") {
-      return <p>Currently No Favorites</p>;
+      return <p className="no-favorites-msg">No Favorites Currently Saved</p>;
     } else {
-      return <p>Loading</p>;
+      return <p className="loading-icon">Loading</p>;
     }
   };
 
   return (
     <section className="content-section">
       <img className="carrot" src={carrot} alt="carrot icon" />
-      <div className="navigation">
+      <nav className="navigation">
         <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
           <button className="return-btn" onClick={props.returnToHero}>
             Back
           </button>
         </Link>
-      </div>
+      </nav>
       <section className={`card-section ${props.theme}`}>{output()}</section>
     </section>
   );
