@@ -65,10 +65,16 @@ export default class ContentSection extends Component {
     return (
       <section className="content-section">
         <img className="carrot" src={carrot} alt="carrot icon" />
-        <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
-          <button onClick={this.props.returnToHero}>Back</button>
-        </Link>
-        {output()}
+        <div className="navigation">
+          <Link to={"hero-section"} smooth={true} offset={0} duration={350}>
+            <button className="return-btn" onClick={this.props.returnToHero}>
+              Back
+            </button>
+          </Link>
+        </div>
+        <section className={`card-section ${this.props.theme}`}>
+          {output()}
+        </section>
       </section>
     );
   }
