@@ -9,9 +9,12 @@ export default class Crawl extends Component {
 
   componentDidMount() {
     this.fetchCrawl();
+  }
+
+  componentDidUpdate() {
     setTimeout(() => {
       this.goToMain();
-    }, 160000);
+    }, 115000);
   }
 
   goToMain = () => {
@@ -19,9 +22,14 @@ export default class Crawl extends Component {
   };
 
   fetchCrawl = async () => {
-    const response = await fetch("https://swapi.co/api/films/1/");
+    const movie = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    const response = await fetch(`https://swapi.co/api/films/${movie}/`);
     const parse = await response.json();
-    this.setState({ title: parse.title, crawl: parse.opening_crawl });
+    console.log("fetch success");
+    this.setState({
+      title: parse.title.toUpperCase(),
+      crawl: parse.opening_crawl
+    });
   };
   render() {
     const crawl = (
