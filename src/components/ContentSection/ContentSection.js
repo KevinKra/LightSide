@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-scroll";
 import "./ContentSection.scss";
 import Card from "../Card/Card";
@@ -38,7 +38,8 @@ export default function ContentSection(props) {
           />
         );
       } else {
-        return <p>"Error in card rendering process"</p>;
+        props.logError("Error in rendering cards.");
+        return <p>Error</p>;
       }
     });
   };

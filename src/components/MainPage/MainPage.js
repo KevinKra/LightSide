@@ -10,6 +10,7 @@ export default class MainPage extends Component {
   state = {
     theme: "people",
     backgroundImage: image6,
+    error: "",
     content: [],
     people: [],
     planets: [],
@@ -96,6 +97,10 @@ export default class MainPage extends Component {
     this.setState({ content: this.state.favorites, theme: "favorites" });
   };
 
+  logError = statement => {
+    this.setState({ error: statement });
+  };
+
   render() {
     return (
       <main className="MainPage">
@@ -110,6 +115,7 @@ export default class MainPage extends Component {
           theme={this.state.theme}
           addToFavorites={this.addToFavorites}
           removeFromFavorites={this.removeFromFavorites}
+          logError={this.logError}
         />
       </main>
     );
