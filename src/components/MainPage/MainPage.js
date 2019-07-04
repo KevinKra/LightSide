@@ -1,21 +1,16 @@
 import React, { Component } from "react";
-import uuidv1 from "uuid/v1";
 import { animateScroll as scroll } from "react-scroll";
+import image6 from "../../utils/images/sw-ruinedship.jpg";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
-import image3 from "../../utils/images/x-wings.jpg";
-import image4 from "../../utils/images/sw-crashedATAT.jpg";
-import image5 from "../../utils/images/sw-crashedxwing.jpg";
-import image6 from "../../utils/images/sw-ruinedship.jpg";
-import image7 from "../../utils/images/sw-waiting.jpg";
-import image8 from "../../utils/images/sw-walkers.jpg";
-import image9 from "../../utils/images/sw-boba.jpg";
+import * as helpers from "../../utils/helpers";
 import "./MainPage.scss";
 
 export default class MainPage extends Component {
   state = {
     theme: "people",
     backgroundImage: image6,
+    error: "",
     content: [],
     people: [],
     planets: [],
@@ -25,77 +20,85 @@ export default class MainPage extends Component {
 
   componentDidMount() {
     scroll.scrollToTop();
-    this.createBg();
+    this.loadNewBackground();
   }
 
-  createBg = () => {
-    console.log("firing");
-    const images = [image3, image4, image5, image6, image7, image8, image9];
-    const index = Math.floor(Math.random() * images.length);
-    this.setState({ backgroundImage: images[index] });
-  };
-
-  fetchData = async data => {
-    const response = await fetch(`https://swapi.co/api/${data}`);
-    const parse = await response.json();
-    const output = parse.results.map(element => {
-      return { ...element, favorited: false, id: uuidv1() };
-    });
-    return output;
+  loadNewBackground = () => {
+    const image = helpers.selectImage();
+    this.setState({ backgroundImage: image });
   };
 
   addToFavorites = target => {
-    const match = this.state.content.filter(element => {
+    const { content, favorites } = this.state;
+    const match = content.filter(element => {
       return element.name === target;
     });
     const newElement = match[0];
     newElement.favorited = true;
-    const detection = this.state.favorites.filter(
+    const detection = favorites.filter(
       element => element.name === newElement.name
     );
-    if (detection.length < 1) {
-      this.setState({ favorites: [...this.state.favorites, newElement] });
-    }
+    detection.length < 1 &&
+      this.setState({ favorites: [...favorites, newElement] });
   };
 
   removeFromFavorites = target => {
-    const element = this.state.favorites.find(element => {
+    const { favorites, people, vehicles, planets } = this.state;
+    const element = favorites.find(element => {
       return element.name === target;
     });
-    element.favorited = false;
-    const updatedFavorites = this.state.favorites.filter(element => {
+    const copy = helpers.updateAssociatedArray(
+      element,
+      people,
+      vehicles,
+      planets
+    );
+
+    if (element.hasOwnProperty("gender")) this.setState({ people: copy });
+    if (element.hasOwnProperty("terrain")) this.setState({ planets: copy });
+    if (element.hasOwnProperty("model")) this.setState({ vehicles: copy });
+
+    this.updateFavorites(target);
+  };
+
+  updateFavorites = target => {
+    const { favorites, theme } = this.state;
+    const newFavorites = favorites.filter(element => {
       return element.name !== target;
     });
-
-    this.state.theme === "favorites" &&
-      this.setState({
-        favorites: updatedFavorites,
-        content: updatedFavorites
-      });
-
-    this.setState({ favorites: updatedFavorites });
+    theme === "favorites"
+      ? this.setState({
+          favorites: newFavorites,
+          content: newFavorites
+        })
+      : this.setState({ favorites: newFavorites });
   };
 
   displayData = async type => {
     setTimeout(() => {
-      this.createBg();
+      this.loadNewBackground();
     }, 1000);
     this.setState({ content: [] });
     if (this.state[type].length > 1) {
       this.setState({ content: this.state[type], theme: type });
     } else {
       this.setState({ theme: type });
-      const response = await this.fetchData(type);
-      if (this.state.theme === type) {
-        this.setState({ content: response, [type]: response, theme: type });
-      } else {
-        this.setState({ [type]: response });
-      }
+      const response = await helpers.fetchData(type);
+      this.state.theme === type
+        ? this.setState({ content: response, [type]: response, theme: type })
+        : this.setState({ [type]: response });
     }
   };
 
   displayFavorites = () => {
+    setTimeout(() => {
+      this.loadNewBackground();
+    }, 1000);
     this.setState({ content: this.state.favorites, theme: "favorites" });
+  };
+
+  logError = statement => {
+    this.setState({ error: statement });
   };
 
   render() {
@@ -112,6 +115,7 @@ export default class MainPage extends Component {
           theme={this.state.theme}
           addToFavorites={this.addToFavorites}
           removeFromFavorites={this.removeFromFavorites}
+          logError={this.logError}
         />
       </main>
     );
