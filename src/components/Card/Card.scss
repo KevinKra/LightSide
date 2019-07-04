@@ -1,0 +1,41 @@
+.Card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  min-width: 300px;
+  z-index: 1;
+  margin: 0 0.5rem;
+  height: 80vh;
+  color: white;
+  button {
+    border: none;
+    color: white;
+    border-top: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.326);
+    padding: 0.8rem 0;
+    transition: 0.09s background-color ease-in;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.726);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.card-bg {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0.542454481792717) 83%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
