@@ -49,11 +49,23 @@ export default class MainPage extends Component {
   };
 
   removeFromFavorites = target => {
-    const { favorites, theme } = this.state;
+    const { favorites, theme, people, vehicles, planets } = this.state;
     const element = favorites.find(element => {
       return element.name === target;
     });
-    element.favorited = false;
+    // console.log(element);
+    const copy = helpers.updateAssociatedArray(
+      element,
+      people,
+      vehicles,
+      planets
+    );
+
+    if (element.hasOwnProperty("gender")) this.setState({ people: copy });
+    if (element.hasOwnProperty("terrain")) this.setState({ planets: copy });
+    if (element.hasOwnProperty("model")) this.setState({ vehicles: copy });
+
+    // element.favorited = false;
     const updatedFavorites = favorites.filter(element => {
       return element.name !== target;
     });
