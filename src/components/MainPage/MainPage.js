@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { animateScroll as scroll } from "react-scroll";
+import image6 from "../../utils/images/sw-ruinedship.jpg";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
 import * as helpers from "../../utils/helpers";
-import image3 from "../../utils/images/x-wings.jpg";
-import image4 from "../../utils/images/sw-crashedATAT.jpg";
-import image5 from "../../utils/images/sw-crashedxwing.jpg";
-import image6 from "../../utils/images/sw-ruinedship.jpg";
-import image7 from "../../utils/images/sw-waiting.jpg";
-import image8 from "../../utils/images/sw-walkers.jpg";
-import image9 from "../../utils/images/sw-boba.jpg";
 import "./MainPage.scss";
 
 export default class MainPage extends Component {
@@ -29,9 +23,8 @@ export default class MainPage extends Component {
   }
 
   loadNewBackground = () => {
-    const images = [image3, image4, image5, image6, image7, image8, image9];
-    const index = Math.floor(Math.random() * images.length);
-    this.setState({ backgroundImage: images[index] });
+    const image = helpers.selectImage();
+    this.setState({ backgroundImage: image });
   };
 
   addToFavorites = target => {

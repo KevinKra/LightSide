@@ -1,4 +1,11 @@
 import uuidv1 from "uuid/v1";
+import image3 from "../../utils/images/x-wings.jpg";
+import image4 from "../../utils/images/sw-crashedATAT.jpg";
+import image5 from "../../utils/images/sw-crashedxwing.jpg";
+import image6 from "../../utils/images/sw-ruinedship.jpg";
+import image7 from "../../utils/images/sw-waiting.jpg";
+import image8 from "../../utils/images/sw-walkers.jpg";
+import image9 from "../../utils/images/sw-boba.jpg";
 
 export const fetchData = async data => {
   const response = await fetch(`https://swapi.co/api/${data}`);
@@ -20,4 +27,10 @@ export function updateAssociatedArray(element, ...args) {
     }
   }
   return output;
+}
+
+export function selectImage() {
+  const images = [image3, image4, image5, image6, image7, image8, image9];
+  const index = Math.floor(Math.random() * images.length);
+  return images[index];
 }
