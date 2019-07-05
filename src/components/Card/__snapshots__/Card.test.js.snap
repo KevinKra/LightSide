@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should match the snapshot when 'person' is passed in as the format 1`] = `ShallowWrapper {}`;
+
+exports[`<Card /> should match the snapshot when 'planet' is passed in as the format 1`] = `ShallowWrapper {}`;
+
+exports[`<Card /> should match the snapshot when 'vehicle' is passed in as the format 1`] = `ShallowWrapper {}`;
