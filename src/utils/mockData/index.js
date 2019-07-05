@@ -1,4 +1,4 @@
-export const mockPersonCard = {
+export const mockPersonData = {
   name: "Steven",
   gender: "Male",
   hair_color: "Brown",
@@ -9,7 +9,7 @@ export const mockPersonCard = {
   favorited: true
 };
 
-export const mockPlanetCard = {
+export const mockPlanetData = {
   name: "Naboo",
   climate: "Moderate",
   terrain: "Grasslands",
@@ -20,7 +20,7 @@ export const mockPlanetCard = {
   favorited: true
 };
 
-export const mockVehicleCard = {
+export const mockVehicleData = {
   name: "Speeder",
   model: "Super",
   vehicle_class: "X12",
