@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import toJSON from "enzyme-to-json";
 import Card from "../Card/Card";
 
@@ -32,13 +32,13 @@ const mockPlanet = {
   population: 5000000,
   rotation_period: 24,
   orbital_period: 375,
-  diameter: 15
+  diameter: 15,
+  favorited: false
 };
 
 describe("<Card />", () => {
   it("should render in the person format", () => {
     const wrapper = shallow(<Card format="person" element={mockPerson} />);
-    // console.log(wrapper.debug());
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
@@ -50,5 +50,34 @@ describe("<Card />", () => {
   it("should render in the planet format", () => {
     const wrapper = shallow(<Card format="planet" element={mockPlanet} />);
     expect(toJSON(wrapper)).toMatchSnapshot();
+  });
+
+  it("should render text 'Favorite' if button's element.favorite is true", () => {
+    const wrapper = shallow(<Card format="planet" element={mockPlanet} />);
+    const button = wrapper.find(".favorite");
+    expect(button.text().includes("Favorite")).toBe(true);
+  });
+
+  it("shoulder render text '✓' if button's element.favroite is false", () => {
+    const mockData = [mockPerson, mockPlanet, mockVehicle];
+    mockData.forEach(mock => (mock.favorited = true));
+    const wrapperPerson = shallow(
+      <Card format="person" element={mockData[0]} />
+    );
+    const wrapperPlanet = shallow(
+      <Card format="planet" element={mockData[1]} />
+    );
+    const wrapperVehicle = shallow(
+      <Card format="vehicle" element={mockData[2]} />
+    );
+
+    const favoritedCards = [wrapperPerson, wrapperPlanet, wrapperVehicle];
+    favoritedCards.forEach(card => {
+      const button = card.find(".unfavorite");
+      expect(button.text().includes("✓")).toBe(true);
+    });
+    // console.log(wrapper.debug());
+    // const button = wrapper.find(".unfavorite");
+    // expect(button.text().includes("✓")).toBe(true);
   });
 });
