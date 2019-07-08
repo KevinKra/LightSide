@@ -76,8 +76,5 @@ describe("<Card />", () => {
       const button = card.find(".unfavorite");
       expect(button.text().includes("✓")).toBe(true);
     });
-    // console.log(wrapper.debug());
-    // const button = wrapper.find(".unfavorite");
-    // expect(button.text().includes("✓")).toBe(true);
   });
 });
