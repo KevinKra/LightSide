@@ -53,9 +53,21 @@ describe("<Card />", () => {
   });
 
   it("should render text 'Favorite' if button's element.favorite is true", () => {
-    const wrapper = shallow(<Card format="planet" element={mockPlanet} />);
-    const button = wrapper.find(".favorite");
-    expect(button.text().includes("Favorite")).toBe(true);
+    const mockData = [mockPerson, mockPlanet, mockVehicle];
+    const wrapperPerson = shallow(
+      <Card format="person" element={mockData[0]} />
+    );
+    const wrapperPlanet = shallow(
+      <Card format="planet" element={mockData[1]} />
+    );
+    const wrapperVehicle = shallow(
+      <Card format="vehicle" element={mockData[2]} />
+    );
+    const favoritedCards = [wrapperPerson, wrapperPlanet, wrapperVehicle];
+    favoritedCards.forEach(card => {
+      const button = card.find(".favorite");
+      expect(button.text().includes("Favorite")).toBe(true);
+    });
   });
 
   it("shoulder render text '✓' if button's element.favroite is false", () => {
