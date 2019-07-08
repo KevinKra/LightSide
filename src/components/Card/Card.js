@@ -40,9 +40,19 @@ export default function Card(props) {
         </section>
         <div className="card-bg person-bg" />
         {!props.element.favorited ? (
-          <button onClick={() => props.addToFavorites(name)}>Favorite</button>
+          <button
+            className="favorite"
+            onClick={() => props.addToFavorites(name)}
+          >
+            Favorite
+          </button>
         ) : (
-          <button onClick={() => props.removeFromFavorites(name)}>✓</button>
+          <button
+            className="unfavorite"
+            onClick={() => props.removeFromFavorites(name)}
+          >
+            ✓
+          </button>
         )}
       </article>
     );
@@ -61,9 +71,19 @@ export default function Card(props) {
         </section>
         <div className="card-bg planet-bg" />
         {!props.element.favorited ? (
-          <button onClick={() => props.addToFavorites(name)}>Favorite</button>
+          <button
+            className="favorite"
+            onClick={() => props.addToFavorites(name)}
+          >
+            Favorite
+          </button>
         ) : (
-          <button onClick={() => props.removeFromFavorites(name)}>✓</button>
+          <button
+            className="unfavorite"
+            onClick={() => props.removeFromFavorites(name)}
+          >
+            ✓
+          </button>
         )}
       </article>
     );
@@ -84,9 +104,19 @@ export default function Card(props) {
         </p>
         <div className="card-bg vehicle-bg" />
         {!props.element.favorited ? (
-          <button onClick={() => props.addToFavorites(name)}>Favorite</button>
+          <button
+            className="favorite"
+            onClick={() => props.addToFavorites(name)}
+          >
+            Favorite
+          </button>
         ) : (
-          <button onClick={() => props.removeFromFavorites(name)}>✓</button>
+          <button
+            className="unfavorite"
+            onClick={() => props.removeFromFavorites(name)}
+          >
+            ✓
+          </button>
         )}
       </article>
     );
