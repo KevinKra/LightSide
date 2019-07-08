@@ -10,7 +10,8 @@ const mockPerson = {
   eye_color: "Blue",
   birth_year: 1995,
   mass: 120,
-  height: 72
+  height: 72,
+  favorited: false
 };
 
 export const mockVehicle = {
@@ -22,7 +23,8 @@ export const mockVehicle = {
   max_atmosphere_speed: 50,
   crew: 15,
   passengers: 30,
-  cargo_capacity: 5
+  cargo_capacity: 5,
+  favorited: false
 };
 
 const mockPlanet = {
@@ -37,19 +39,23 @@ const mockPlanet = {
 };
 
 describe("<Card />", () => {
+  let wrapperPerson, wrapperPlanet, wrapperVehicle;
+  beforeEach(() => {
+    wrapperPerson = shallow(<Card format="person" element={mockPerson} />);
+    wrapperPlanet = shallow(<Card format="planet" element={mockPlanet} />);
+    wrapperVehicle = shallow(<Card format="vehicle" element={mockVehicle} />);
+  });
+
   it("should render in the person format", () => {
-    const wrapper = shallow(<Card format="person" element={mockPerson} />);
-    expect(toJSON(wrapper)).toMatchSnapshot();
+    expect(toJSON(wrapperPerson)).toMatchSnapshot();
   });
 
   it("should render in the vehicle format", () => {
-    const wrapper = shallow(<Card format="vehicle" element={mockVehicle} />);
-    expect(toJSON(wrapper)).toMatchSnapshot();
+    expect(toJSON(wrapperVehicle)).toMatchSnapshot();
   });
 
   it("should render in the planet format", () => {
-    const wrapper = shallow(<Card format="planet" element={mockPlanet} />);
-    expect(toJSON(wrapper)).toMatchSnapshot();
+    expect(toJSON(wrapperPlanet)).toMatchSnapshot();
   });
 
   it("should render text 'Favorite' if button's element.favorite is true", () => {
@@ -71,30 +77,16 @@ describe("<Card />", () => {
   });
 
   it("should render text '✓' if button's element.favroite is false", () => {
-    const mockData = [mockPerson, mockPlanet, mockVehicle];
-    mockData.forEach(mock => (mock.favorited = true));
-    const wrapperPerson = shallow(
-      <Card format="person" element={mockData[0]} />
+    [mockPerson, mockVehicle, mockPlanet].forEach(
+      mockData => (mockData.favorited = true)
     );
-    const wrapperPlanet = shallow(
-      <Card format="planet" element={mockData[1]} />
-    );
-    const wrapperVehicle = shallow(
-      <Card format="vehicle" element={mockData[2]} />
-    );
-
-    const favoritedCards = [wrapperPerson, wrapperPlanet, wrapperVehicle];
-    favoritedCards.forEach(card => {
-      const button = card.find(".unfavorite");
-      expect(button.text().includes("✓")).toBe(true);
-    });
+    wrapperPerson.setProps({ element: mockPerson });
+    wrapperVehicle.setProps({ element: mockVehicle });
+    wrapperPlanet.setProps({ element: mockPlanet });
+    expect(toJSON(wrapperPerson)).toMatchSnapshot();
+    expect(toJSON(wrapperPlanet)).toMatchSnapshot();
+    expect(toJSON(wrapperVehicle)).toMatchSnapshot();
   });
 
-  it.skip("should add the card to the favorites array when clicked", () => {
-    const wrapper = shallow(<Card format="person" element={mockPerson} />);
-  });
-
-  it.skip("should remove the card to the favorites array when clicked", () => {
-    const wrapper = shallow(<Card format="person" element={mockPerson} />);
-  });
+  it("should call the method", () => {});
 });
