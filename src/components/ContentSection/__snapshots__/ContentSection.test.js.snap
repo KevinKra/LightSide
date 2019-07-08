@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContentSection /> should render without errors 1`] = `
+<section
+  className="content-section"
+>
+  <img
+    alt="carrot icon"
+    className="carrot"
+    src="caret-up-solid.svg"
+  />
+  <nav
+    className="navigation"
+  >
+    <Link
+      duration={350}
+      offset={0}
+      smooth={true}
+      to="hero-section"
+    >
+      <button
+        className="return-btn"
+      >
+        Back
+      </button>
+    </Link>
+  </nav>
+  <section
+    className="card-section person"
+  >
+    <Card
+      element={
+        Object {
+          "birth_year": 1995,
+          "eye_color": "Blue",
+          "gender": "Male",
+          "hair_color": "Green",
+          "height": 72,
+          "id": 1,
+          "mass": 120,
+          "name": "Joe",
+        }
+      }
+      format="person"
+      key="1"
+    />
+    <Card
+      element={
+        Object {
+          "birth_year": 1092,
+          "eye_color": "Yellow",
+          "gender": "Unknown",
+          "hair_color": "Orange",
+          "height": 150,
+          "id": 2,
+          "mass": 10,
+          "name": "Tony",
+        }
+      }
+      format="person"
+      key="2"
+    />
+  </section>
+</section>
+`;
