@@ -148,3 +148,152 @@ exports[`<Card /> should render in the vehicle format 1`] = `
   </button>
 </article>
 `;
+
+exports[`<Card /> should render text '✓' if button's element.favorite is false 1`] = `
+<article
+  className="Card"
+>
+  <section
+    className="card-primary"
+  >
+    <h1>
+      Joe
+    </h1>
+    <p>
+      gender: 
+      Male
+    </p>
+    <p>
+      hair: 
+      Green
+    </p>
+    <p>
+      eye color: 
+      Blue
+    </p>
+    <p>
+      birth year: 
+      1995
+    </p>
+    <p>
+      mass: 
+      120
+    </p>
+    <p>
+      height: 
+      72
+    </p>
+  </section>
+  <div
+    className="card-bg person-bg"
+  />
+  <button
+    className="unfavorite"
+    onClick={[Function]}
+  >
+    ✓
+  </button>
+</article>
+`;
+
+exports[`<Card /> should render text '✓' if button's element.favorite is false 2`] = `
+<article
+  className="Card"
+>
+  <section
+    className="card-primary"
+  >
+    <h1>
+      Naboo
+    </h1>
+    <p>
+      climate: 
+      Moderate
+    </p>
+    <p>
+      terrain: 
+      Grasslands
+    </p>
+    <p>
+      population: 
+      5000000
+    </p>
+    <p>
+      day length: 
+      24
+       hours
+    </p>
+    <p>
+      year length: 
+      375
+       days
+    </p>
+    <p>
+      diameter: 
+      15
+    </p>
+  </section>
+  <div
+    className="card-bg planet-bg"
+  />
+  <button
+    className="unfavorite"
+    onClick={[Function]}
+  >
+    ✓
+  </button>
+</article>
+`;
+
+exports[`<Card /> should render text '✓' if button's element.favorite is false 3`] = `
+<article
+  className="Card"
+>
+  <p
+    className="card-primary"
+  >
+    <h1>
+      Speeder
+    </h1>
+    <p>
+      model: 
+      Super
+    </p>
+    <p>
+      class: 
+      X12
+    </p>
+    <p>
+      manufacturer: 
+      Toyota
+    </p>
+    <p>
+      cost: 
+    </p>
+    <p>
+      maximum speed: 
+    </p>
+    <p>
+      crew capacity: 
+      15
+    </p>
+    <p>
+      passenger capacity: 
+      30
+    </p>
+    <p>
+      cargo capacity: 
+      5
+    </p>
+  </p>
+  <div
+    className="card-bg vehicle-bg"
+  />
+  <button
+    className="unfavorite"
+    onClick={[Function]}
+  >
+    ✓
+  </button>
+</article>
+`;
