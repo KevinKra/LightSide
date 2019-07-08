@@ -70,7 +70,7 @@ describe("<Card />", () => {
     });
   });
 
-  it("shoulder render text '✓' if button's element.favroite is false", () => {
+  it("should render text '✓' if button's element.favroite is false", () => {
     const mockData = [mockPerson, mockPlanet, mockVehicle];
     mockData.forEach(mock => (mock.favorited = true));
     const wrapperPerson = shallow(
@@ -88,5 +88,13 @@ describe("<Card />", () => {
       const button = card.find(".unfavorite");
       expect(button.text().includes("✓")).toBe(true);
     });
+  });
+
+  it.skip("should add the card to the favorites array when clicked", () => {
+    const wrapper = shallow(<Card format="person" element={mockPerson} />);
+  });
+
+  it.skip("should remove the card to the favorites array when clicked", () => {
+    const wrapper = shallow(<Card format="person" element={mockPerson} />);
   });
 });
