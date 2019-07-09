@@ -4,6 +4,7 @@ import image6 from "../../utils/images/sw-ruinedship.jpg";
 import ContentSection from "../ContentSection/ContentSection";
 import HeroSection from "../HeroSection/HeroSection";
 import * as helpers from "../../utils/helpers";
+import { fetchData } from "../../utils/api/apiCalls";
 import "./MainPage.scss";
 
 export default class MainPage extends Component {
@@ -83,7 +84,7 @@ export default class MainPage extends Component {
       this.setState({ content: this.state[type], theme: type });
     } else {
       this.setState({ theme: type });
-      const response = await helpers.fetchData(type);
+      const response = await fetchData(type);
       this.state.theme === type
         ? this.setState({ content: response, [type]: response, theme: type })
         : this.setState({ [type]: response });
