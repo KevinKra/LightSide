@@ -40,10 +40,33 @@ const mockPlanet = {
 
 describe("<Card />", () => {
   let wrapperPerson, wrapperPlanet, wrapperVehicle;
+  const mockAddToFavorites = jest.fn();
+  const mockRemoveFromFavorites = jest.fn();
   beforeEach(() => {
-    wrapperPerson = shallow(<Card format="person" element={mockPerson} />);
-    wrapperPlanet = shallow(<Card format="planet" element={mockPlanet} />);
-    wrapperVehicle = shallow(<Card format="vehicle" element={mockVehicle} />);
+    wrapperPerson = shallow(
+      <Card
+        format="person"
+        element={mockPerson}
+        addToFavorites={mockAddToFavorites}
+        removeFromFavorites={mockRemoveFromFavorites}
+      />
+    );
+    wrapperPlanet = shallow(
+      <Card
+        format="planet"
+        element={mockPlanet}
+        addToFavorites={mockAddToFavorites}
+        removeFromFavorites={mockRemoveFromFavorites}
+      />
+    );
+    wrapperVehicle = shallow(
+      <Card
+        format="vehicle"
+        element={mockVehicle}
+        addToFavorites={mockAddToFavorites}
+        removeFromFavorites={mockRemoveFromFavorites}
+      />
+    );
   });
 
   it("should render in the person format", () => {
@@ -58,25 +81,19 @@ describe("<Card />", () => {
     expect(toJSON(wrapperPlanet)).toMatchSnapshot();
   });
 
-  it("should render text 'Favorite' if button's element.favorite is true", () => {
-    const mockData = [mockPerson, mockPlanet, mockVehicle];
-    const wrapperPerson = shallow(
-      <Card format="person" element={mockData[0]} />
-    );
-    const wrapperPlanet = shallow(
-      <Card format="planet" element={mockData[1]} />
-    );
-    const wrapperVehicle = shallow(
-      <Card format="vehicle" element={mockData[2]} />
-    );
-    const favoritedCards = [wrapperPerson, wrapperPlanet, wrapperVehicle];
-    favoritedCards.forEach(card => {
-      const button = card.find(".favorite");
-      expect(button.text().includes("Favorite")).toBe(true);
-    });
+  it("should trigger addToFavorites prop when button is clicked", () => {
+    wrapperPerson.find("button.favorite").simulate("click");
+    expect(mockAddToFavorites).toHaveBeenCalledTimes(1);
   });
 
-  it("should render text '✓' if button's element.favroite is false", () => {
+  it("should trigger removeFromFavorites prop when button is clicked", () => {
+    mockPerson.favorited = true;
+    wrapperPerson.setProps({ element: mockPerson });
+    wrapperPerson.find("button.unfavorite").simulate("click");
+    expect(mockRemoveFromFavorites).toHaveBeenCalledTimes(1);
+  });
+
+  it("should render text '✓' if button's element.favorite is false", () => {
     [mockPerson, mockVehicle, mockPlanet].forEach(
       mockData => (mockData.favorited = true)
     );
@@ -87,6 +104,4 @@ describe("<Card />", () => {
     expect(toJSON(wrapperPlanet)).toMatchSnapshot();
     expect(toJSON(wrapperVehicle)).toMatchSnapshot();
   });
-
-  it("should call the method", () => {});
 });
