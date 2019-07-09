@@ -1,37 +1,5 @@
-import React from "react";
-import { shallow } from "enzyme";
-import toJSON from "enzyme-to-json";
 import { fetchData } from "./apiCalls";
-import { promised } from "q";
-
-const mockResponse = {
-  results: [
-    {
-      name: "Joe",
-      gender: "Male",
-      hair_color: "Green",
-      eye_color: "Blue",
-      birth_year: 1995,
-      mass: 120,
-      height: 72
-    }
-  ]
-};
-
-const mockResponseFavorites = {
-  results: [
-    {
-      name: "Joe",
-      gender: "Male",
-      hair_color: "Green",
-      favorites: false,
-      eye_color: "Blue",
-      birth_year: 1995,
-      mass: 120,
-      height: 72
-    }
-  ]
-};
+import { mockResponse } from "../mockData";
 
 describe("fetchData", () => {
   beforeEach(() => {
