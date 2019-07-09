@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainPage /> should match the snapshot 1`] = `
+<main
+  className="MainPage"
+>
+  <HeroSection
+    backgroundImage="sw-ruinedship.jpg"
+    displayData={[Function]}
+    displayFavorites={[Function]}
+    totalFavorites={0}
+  />
+  <ContentSection
+    addToFavorites={[Function]}
+    content={Array []}
+    logError={[Function]}
+    removeFromFavorites={[Function]}
+    theme="people"
+  />
+</main>
+`;

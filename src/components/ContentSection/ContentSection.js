@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import "./ContentSection.scss";
 import Card from "../Card/Card";
 import carrot from "../../utils/images/caret-up-solid.svg";
+import PropTypes from "prop-types";
 
 export default function ContentSection(props) {
   const cards = () => {
@@ -70,3 +71,11 @@ export default function ContentSection(props) {
     </section>
   );
 }
+
+ContentSection.propTypes = {
+  content: PropTypes.array.isRequired,
+  theme: PropTypes.string.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired,
+  logError: PropTypes.func.isRequired
+};

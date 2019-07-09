@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContentSection /> should match the snapshot per each theme 1`] = `
+<section
+  className="content-section"
+>
+  <img
+    alt="carrot icon"
+    className="carrot"
+    src="caret-up-solid.svg"
+  />
+  <nav
+    className="navigation"
+  >
+    <Link
+      duration={350}
+      offset={0}
+      smooth={true}
+      to="hero-section"
+    >
+      <button
+        className="return-btn"
+      >
+        Back
+      </button>
+    </Link>
+  </nav>
+  <section
+    className="card-section person"
+  >
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "birth_year": 1995,
+          "eye_color": "Blue",
+          "gender": "Male",
+          "hair_color": "Green",
+          "height": 72,
+          "id": 1,
+          "mass": 120,
+          "name": "Joe",
+        }
+      }
+      format="person"
+      key="1"
+      removeFromFavorites={[MockFunction]}
+    />
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "birth_year": 1092,
+          "eye_color": "Yellow",
+          "gender": "Unknown",
+          "hair_color": "Orange",
+          "height": 150,
+          "id": 2,
+          "mass": 10,
+          "name": "Tony",
+        }
+      }
+      format="person"
+      key="2"
+      removeFromFavorites={[MockFunction]}
+    />
+  </section>
+</section>
+`;
+
+exports[`<ContentSection /> should match the snapshot per each theme 2`] = `
+<section
+  className="content-section"
+>
+  <img
+    alt="carrot icon"
+    className="carrot"
+    src="caret-up-solid.svg"
+  />
+  <nav
+    className="navigation"
+  >
+    <Link
+      duration={350}
+      offset={0}
+      smooth={true}
+      to="hero-section"
+    >
+      <button
+        className="return-btn"
+      >
+        Back
+      </button>
+    </Link>
+  </nav>
+  <section
+    className="card-section planet"
+  >
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "climate": "Moderate",
+          "diameter": 15,
+          "favorited": false,
+          "id": 1,
+          "name": "Naboo",
+          "orbital_period": 375,
+          "population": 5000000,
+          "rotation_period": 24,
+          "terrain": "Grasslands",
+        }
+      }
+      format="planet"
+      key="1"
+      removeFromFavorites={[MockFunction]}
+    />
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "climate": "Dry",
+          "diameter": 9,
+          "favorited": false,
+          "id": 2,
+          "name": "Tatooine",
+          "orbital_period": 475,
+          "population": 50000,
+          "rotation_period": 34,
+          "terrain": "Desert",
+        }
+      }
+      format="planet"
+      key="2"
+      removeFromFavorites={[MockFunction]}
+    />
+  </section>
+</section>
+`;
+
+exports[`<ContentSection /> should match the snapshot per each theme 3`] = `
+<section
+  className="content-section"
+>
+  <img
+    alt="carrot icon"
+    className="carrot"
+    src="caret-up-solid.svg"
+  />
+  <nav
+    className="navigation"
+  >
+    <Link
+      duration={350}
+      offset={0}
+      smooth={true}
+      to="hero-section"
+    >
+      <button
+        className="return-btn"
+      >
+        Back
+      </button>
+    </Link>
+  </nav>
+  <section
+    className="card-section vehicle"
+  >
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "cargo_capacity": 5,
+          "const_in_credits": 15000,
+          "crew": 15,
+          "favorited": false,
+          "id": 1,
+          "manufacturer": "Toyota",
+          "max_atmosphere_speed": 50,
+          "model": "Super",
+          "name": "Speeder",
+          "passengers": 30,
+          "vehicle_class": "X12",
+        }
+      }
+      format="vehicle"
+      key="1"
+      removeFromFavorites={[MockFunction]}
+    />
+    <Card
+      addToFavorites={[MockFunction]}
+      element={
+        Object {
+          "cargo_capacity": 0,
+          "const_in_credits": 150000,
+          "crew": 1,
+          "favorited": false,
+          "id": 2,
+          "manufacturer": "Yamaha",
+          "max_atmosphere_speed": 1,
+          "model": "Sloweest",
+          "name": "Slowboy",
+          "passengers": 1,
+          "vehicle_class": "z12",
+        }
+      }
+      format="vehicle"
+      key="2"
+      removeFromFavorites={[MockFunction]}
+    />
+  </section>
+</section>
+`;
