@@ -5,7 +5,7 @@ exports[`<MainPage /> should match the snapshot 1`] = `
   className="MainPage"
 >
   <HeroSection
-    backgroundImage="sw-boba.jpg"
+    backgroundImage="sw-ruinedship.jpg"
     displayData={[Function]}
     displayFavorites={[Function]}
     totalFavorites={0}
