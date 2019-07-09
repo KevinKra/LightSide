@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.scss";
+import PropTypes from "prop-types";
 
 export default function Card(props) {
   const {
@@ -91,7 +92,7 @@ export default function Card(props) {
   if (props.format === "vehicle") {
     return (
       <article className="Card">
-        <p className="card-primary">
+        <section className="card-primary">
           <h1>{name}</h1>
           <p>model: {model}</p>
           <p>class: {vehicle_class}</p>
@@ -101,7 +102,7 @@ export default function Card(props) {
           <p>crew capacity: {crew}</p>
           <p>passenger capacity: {passengers}</p>
           <p>cargo capacity: {cargo_capacity}</p>
-        </p>
+        </section>
         <div className="card-bg vehicle-bg" />
         {!props.element.favorited ? (
           <button
@@ -122,3 +123,10 @@ export default function Card(props) {
     );
   }
 }
+
+Card.propTypes = {
+  format: PropTypes.string.isRequired,
+  element: PropTypes.object.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  removeFromFavorites: PropTypes.func.isRequired
+};
