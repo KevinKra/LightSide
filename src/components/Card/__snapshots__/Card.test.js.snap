@@ -100,7 +100,7 @@ exports[`<Card /> should render in the vehicle format 1`] = `
 <article
   className="Card"
 >
-  <p
+  <section
     className="card-primary"
   >
     <h1>
@@ -136,7 +136,7 @@ exports[`<Card /> should render in the vehicle format 1`] = `
       cargo capacity: 
       5
     </p>
-  </p>
+  </section>
   <div
     className="card-bg vehicle-bg"
   />
@@ -249,7 +249,7 @@ exports[`<Card /> should render text '✓' if button's element.favorite is false
 <article
   className="Card"
 >
-  <p
+  <section
     className="card-primary"
   >
     <h1>
@@ -285,7 +285,7 @@ exports[`<Card /> should render text '✓' if button's element.favorite is false
       cargo capacity: 
       5
     </p>
-  </p>
+  </section>
   <div
     className="card-bg vehicle-bg"
   />
