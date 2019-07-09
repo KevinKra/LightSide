@@ -34,6 +34,17 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/utils/mockData/index.js",
+      "!src/utils/helpers/index.js",
+      "!src/index.js",
+      "!src/SetupTests.js",
+      "!src/serviceWorker.js",
+      "!src/Reducers/index.js"
+    ]
+  },
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
