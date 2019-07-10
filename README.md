@@ -17,6 +17,10 @@ Built in React, LightSide is an application that uses the StarWars API (SWAPI) t
 - SCSS (CSS)
 - Jest | Enzyme
 
+## Challenges
+
+One of the key design challenges stemmed from the limited data provided from the API. In short, no images of any sort existed in the database. Subsequently, I felt the most appropriate solution to this challenge was to design a sleek and minimalistic UI/UX that pulled from a pool of illustrations that allowed for full screen images to accommodate the text data provided. Furthermore, the simplicity of the user interface allows for both images and text to display in parallel without clashing along with the added benefit of allowing off-screen image re-renders to seamlessly keep content transitions fresh and interesting.
+
 ## Installation
 
 Clone the repo - https://github.com/KevinKra/LightSide
@@ -25,11 +29,11 @@ Run `npm install` from the root directory
 
 Run `npm start` and visit `localhost:3000` in your browser
 
-## Testing
+## Future extensions
 
-Website is tested with Jest and Enzyme
-
-Run `npm run test` to see test suite
+- Support pagination
+- Local storage utilization
+- Further refactoring
 
 ## Contributing
 
