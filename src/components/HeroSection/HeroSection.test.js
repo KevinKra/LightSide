@@ -1,8 +1,8 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import { shallow } from "enzyme";
+import { mockBackgroundImage } from "../../utils/mockData";
 
-const mockBackgroundImage = "sw-ruinedship.7713b57a.jpg";
 const mockTotalFavorites = 1;
 const mockDisplayData = jest.fn();
 const mockDisplayFavorites = jest.fn();
