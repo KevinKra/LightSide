@@ -34,6 +34,22 @@
   height: 100vh;
 }
 
+.no-favorites-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  width: 98%;
+}
+
+.loading-icon {
+  align-self: center;
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+}
+
 .people {
   background-image: url("../../utils/images/sw-waiting.jpg");
   background-size: cover;

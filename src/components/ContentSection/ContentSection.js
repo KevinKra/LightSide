@@ -4,6 +4,7 @@ import "./ContentSection.scss";
 import Card from "../Card/Card";
 import carrot from "../../utils/images/caret-up-solid.svg";
 import PropTypes from "prop-types";
+import LoadingIcon from "../../utils/images/Eclipse-1s-200px.svg";
 
 export default function ContentSection(props) {
   const cards = () => {
@@ -53,7 +54,7 @@ export default function ContentSection(props) {
     } else if (props.content.length === 0 && props.theme === "favorites") {
       return <p className="no-favorites-msg">No Favorites Currently Saved</p>;
     } else {
-      return <p className="loading-icon">Loading</p>;
+      return <img className="loading-icon" src={LoadingIcon} alt="loading" />;
     }
   };
 
