@@ -19,7 +19,13 @@ Built in React, LightSide is an application that uses the StarWars API (SWAPI) t
 
 ## Challenges
 
-One of the key design challenges stemmed from the limited data provided from the API. In short, no images of any sort existed in the database. Subsequently, I felt the most appropriate solution to this challenge was to design a sleek and minimalistic UI/UX that pulled from a pool of illustrations that allowed for full screen images to accommodate the text data provided. Furthermore, the simplicity of the user interface allows for both images and text to display in parallel without clashing along with the added benefit of allowing off-screen image re-renders to seamlessly keep content transitions fresh and interesting.
+### Design
+
+One of the key design challenges stemmed from the limited data provided from the API. In short, no images of any sort existed in the database. Subsequently, I felt the most appropriate solution to this challenge was to design a sleek and streamlined UI/UX that pulled from a pool of illustrations that allowed for full screen images to accommodate the strict text data provided. The simplicity of the user interface allows for both images and text to display in parallel without clashing along with the added benefit of allowing off-screen image re-renders to seamlessly keep content transitions fresh and interesting.
+
+### Functionality
+
+An interesting problem occurred when I needed to determine a means to dynamically re-render the DOM without touching it directly. As a result, I wrote a function that allowed for `n` arguments, the state themes, to be iterated through and detected against the element, a card, that was being favorited or unfavorited. This provided for mutations to occur on copied arrays which then could be subsequently placed into the appropriate state container based on the shape of the data itself.
 
 ## Installation
 
