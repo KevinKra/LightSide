@@ -25,7 +25,7 @@ One of the key design challenges stemmed from the limited data provided from the
 
 ### Functionality
 
-An interesting problem occurred when I needed to determine a means to dynamically re-render the DOM without touching it directly. As a result, I wrote a function that allow for `n` arguments, the state themes, to be iterated through and detected against the element, a card, that was being favorited or unfavorited. This allowed for mutations to occur on copied arrays which then could be subsequently placed into the appropriate state container based on the shape of the data itself.
+An interesting problem occurred when I needed to determine a means to dynamically re-render the DOM without touching it directly. As a result, I wrote a function that allowed for `n` arguments, the state themes, to be iterated through and detected against the element, a card, that was being favorited or unfavorited. This provided for mutations to occur on copied arrays which then could be subsequently placed into the appropriate state container based on the shape of the data itself.
 
 ## Installation
 
