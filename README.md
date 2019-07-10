@@ -31,6 +31,12 @@ Website is tested with Jest and Enzyme
 
 Run `npm run test` to see test suite
 
+## Future extensions
+
+- Support pagination
+- Local storage utilization
+- Further refactoring
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
